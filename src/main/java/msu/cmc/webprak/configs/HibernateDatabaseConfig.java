@@ -15,11 +15,11 @@ import java.util.Properties;
 public class HibernateDatabaseConfig {
     @Value("${driver}")
     private String DB_DRIVER;
-    @Value("${spring.datasource.url}")
+    @Value("${url}")
     private String DB_URL;
-    @Value("${spring.datasource.username}")
+    @Value("${username}")
     private String DB_USERNAME;
-    @Value("${spring.datasource.password}")
+    @Value("${password}")
     private String DB_PASSWORD;
 
     @Bean
