@@ -13,7 +13,7 @@ public interface CommonDAO<T extends CommonEntity<ID>, ID> {
 
     void saveCollection(Collection<T> entities);
 
-//    void delete(T entity);
+    void delete(T entity);
 
     void update(T entity);
 }
