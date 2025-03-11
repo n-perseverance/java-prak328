@@ -2,16 +2,13 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.4.3'
 	id 'io.spring.dependency-management' version '1.1.7'
-	id 'com.github.ben-manes.versions' version '0.42.0'
 }
 
-group = 'msu.cmc'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+version = '1.0-SNAPSHOT'
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
+		languageVersion = JavaLanguageVersion.of(23)
 	}
 }
 
@@ -26,18 +23,26 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.hibernate.orm:hibernate-core:6.4.1.Final'
+	implementation 'org.postgresql:postgresql:42.7.1'
+	implementation 'org.webjars:bootstrap:5.3.2'
+	implementation 'org.webjars:webjars-locator-core'
+
+
 	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
-	testImplementation 'com.h2database:h2:2.2.224'
-	implementation 'org.hibernate.orm:hibernate-core:6.2.0.Final'
+
+	annotationProcessor 'org.projectlombok:lombok'
+
+	runtimeOnly 'org.postgresql:postgresql'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.junit.jupiter:junit-jupiter-api'
-	testImplementation 'org.junit.jupiter:junit-jupiter-engine'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testImplementation 'org.testng:testng:7.9.0'
+	testImplementation 'org.hibernate.orm:hibernate-core:6.4.1.Final'
+	testImplementation 'org.postgresql:postgresql:42.7.1'
 }
 
 tasks.named('test') {
