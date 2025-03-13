@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="msu.cmc.webprak.DAOTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-03-13T14:01:22" hostname="MacBook-Air-Nik.local" time="0.582">
+  <properties/>
+  <testcase name="testBookCRUD()" classname="msu.cmc.webprak.DAOTests" time="0.582"/>
+  <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.3)
+
+2025-03-13T17:01:21.371+03:00  INFO 96831 --- [    Test worker] msu.cmc.webprak.DAOTests                 : Starting DAOTests using Java 23.0.2 with PID 96831 (started by nik in /Users/nik/Desktop/java-prak)
+2025-03-13T17:01:21.373+03:00  INFO 96831 --- [    Test worker] msu.cmc.webprak.DAOTests                 : No active profile set, falling back to 1 default profile: "default"
+2025-03-13T17:01:21.373+03:00 DEBUG 96831 --- [    Test worker] o.s.boot.SpringApplication               : Loading source class msu.cmc.webprak.configs.HibernateConfig
+2025-03-13T17:01:21.414+03:00 DEBUG 96831 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@6bf7ea18
+2025-03-13T17:01:21.429+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2025-03-13T17:01:21.446+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory'
+2025-03-13T17:01:21.495+03:00 DEBUG 96831 --- [    Test worker] o.s.c.a.ClassPathBeanDefinitionScanner   : Identified candidate component class: file [/Users/nik/Desktop/java-prak/build/classes/java/main/msu/cmc/webprak/DAO/BookDAO.class]
+2025-03-13T17:01:21.496+03:00 DEBUG 96831 --- [    Test worker] o.s.c.a.ClassPathBeanDefinitionScanner   : Identified candidate component class: file [/Users/nik/Desktop/java-prak/build/classes/java/main/msu/cmc/webprak/DAO/HistoryDAO.class]
+2025-03-13T17:01:21.496+03:00 DEBUG 96831 --- [    Test worker] o.s.c.a.ClassPathBeanDefinitionScanner   : Identified candidate component class: file [/Users/nik/Desktop/java-prak/build/classes/java/main/msu/cmc/webprak/DAO/ReaderDAO.class]
+2025-03-13T17:01:21.608+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.boot.test.mock.mockito.MockitoPostProcessor'
+2025-03-13T17:01:21.623+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+2025-03-13T17:01:21.625+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+2025-03-13T17:01:21.625+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.transaction.config.internalTransactionalEventListenerFactory'
+2025-03-13T17:01:21.627+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.boot.test.mock.mockito.MockitoPostProcessor$SpyPostProcessor'
+2025-03-13T17:01:21.628+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2025-03-13T17:01:21.630+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2025-03-13T17:01:21.634+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.context.annotation.internalPersistenceAnnotationProcessor'
+2025-03-13T17:01:21.635+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.aop.config.internalAutoProxyCreator'
+2025-03-13T17:01:21.647+03:00 DEBUG 96831 --- [    Test worker] o.s.u.c.s.UiApplicationContextUtils      : Unable to locate ThemeSource with name 'themeSource': using default [org.springframework.ui.context.support.ResourceBundleThemeSource@55365b65]
+2025-03-13T17:01:21.648+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.test.context.support.internalDynamicPropertyRegistrarBeanInitializer'
+2025-03-13T17:01:21.649+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2025-03-13T17:01:21.649+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration'
+2025-03-13T17:01:21.655+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'transactionAttributeSource'
+2025-03-13T17:01:21.657+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'transactionInterceptor'
+2025-03-13T17:01:21.657+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Autowiring by type from bean name 'transactionInterceptor' via factory method to bean named 'transactionAttributeSource'
+2025-03-13T17:01:21.662+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Autowiring by type from bean name 'org.springframework.transaction.config.internalTransactionAdvisor' via factory method to bean named 'transactionAttributeSource'
+2025-03-13T17:01:21.662+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Autowiring by type from bean name 'org.springframework.transaction.config.internalTransactionAdvisor' via factory method to bean named 'transactionInterceptor'
+2025-03-13T17:01:21.667+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'hibernateConfig'
+2025-03-13T17:01:21.669+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'bookDAO'
+2025-03-13T17:01:21.672+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'sessionFactory'
+2025-03-13T17:01:21.677+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'dataSource'
+2025-03-13T17:01:21.683+03:00 DEBUG 96831 --- [    Test worker] o.s.j.d.DriverManagerDataSource          : Loaded JDBC driver: org.postgresql.Driver
+2025-03-13T17:01:21.759+03:00  INFO 96831 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2025-03-13T17:01:21.808+03:00  INFO 96831 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-13T17:01:21.922+03:00 DEBUG 96831 --- [    Test worker] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/webprak]
+2025-03-13T17:01:22.080+03:00  WARN 96831 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000511: The 11.22.0 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
+2025-03-13T17:01:22.084+03:00  WARN 96831 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-13T17:01:22.539+03:00  INFO 96831 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-13T17:01:22.592+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'historyDAO'
+2025-03-13T17:01:22.604+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'readerDAO'
+2025-03-13T17:01:22.613+03:00 DEBUG 96831 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'transactionManager'
+2025-03-13T17:01:22.631+03:00 DEBUG 96831 --- [    Test worker] o.s.o.h.HibernateTransactionManager      : Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@784ab885] of Hibernate SessionFactory for HibernateTransactionManager
+2025-03-13T17:01:22.639+03:00 DEBUG 96831 --- [    Test worker] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase -2147483647
+2025-03-13T17:01:22.639+03:00 DEBUG 96831 --- [    Test worker] o.s.c.support.DefaultLifecycleProcessor  : Successfully started bean 'springBootLoggingLifecycle'
+2025-03-13T17:01:22.641+03:00  INFO 96831 --- [    Test worker] msu.cmc.webprak.DAOTests                 : Started DAOTests in 1.541 seconds (process running for 2.506)
+2025-03-13T17:01:22.645+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 0, missCount = 1, failureCount = 0]
+2025-03-13T17:01:22.645+03:00 DEBUG 96831 --- [    Test worker] o.s.t.c.w.ServletTestExecutionListener   : Setting up MockHttpServletRequest, MockHttpServletResponse, ServletWebRequest, and RequestContextHolder for test class msu.cmc.webprak.DAOTests
+2025-03-13T17:01:22.658+03:00 DEBUG 96831 --- [    Test worker] DependencyInjectionTestExecutionListener : Performing dependency injection for test class msu.cmc.webprak.DAOTests
+2025-03-13T17:01:22.658+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 1, missCount = 1, failureCount = 0]
+2025-03-13T17:01:22.659+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 2, missCount = 1, failureCount = 0]
+2025-03-13T17:01:22.661+03:00 DEBUG 96831 --- [    Test worker] sContextBeforeModesTestExecutionListener : Before test method: class [DAOTests], method [testBookCRUD], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null]
+2025-03-13T17:01:22.663+03:00 DEBUG 96831 --- [    Test worker] t.c.t.TransactionalTestExecutionListener : Explicit transaction definition [PROPAGATION_REQUIRED,ISOLATION_DEFAULT] found for test class [msu.cmc.webprak.DAOTests] and test method [testBookCRUD]
+2025-03-13T17:01:22.663+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 3, missCount = 1, failureCount = 0]
+2025-03-13T17:01:22.664+03:00 DEBUG 96831 --- [    Test worker] t.c.t.TransactionalTestExecutionListener : No method-level @Rollback override: using default rollback [true] for test method [public void msu.cmc.webprak.DAOTests.testBookCRUD()]
+2025-03-13T17:01:22.667+03:00 DEBUG 96831 --- [    Test worker] o.s.o.h.HibernateTransactionManager      : Creating new transaction with name [msu.cmc.webprak.DAOTests.testBookCRUD]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2025-03-13T17:01:22.700+03:00 DEBUG 96831 --- [    Test worker] o.s.o.h.HibernateTransactionManager      : Opened new Session [SessionImpl(797062899<open>)] for Hibernate transaction
+2025-03-13T17:01:22.703+03:00 DEBUG 96831 --- [    Test worker] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/webprak]
+2025-03-13T17:01:22.723+03:00 DEBUG 96831 --- [    Test worker] o.s.o.h.HibernateTransactionManager      : Exposing Hibernate transaction as JDBC [org.springframework.orm.hibernate5.HibernateTransactionManager$$Lambda/0x00000fe001637678@2738be15]
+2025-03-13T17:01:22.724+03:00 DEBUG 96831 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test class [msu.cmc.webprak.DAOTests]; test method [testBookCRUD]; transaction manager [org.springframework.orm.hibernate5.HibernateTransactionManager@f00d7cc]; rollback [true]
+2025-03-13T17:01:22.725+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 4, missCount = 1, failureCount = 0]
+2025-03-13T17:01:22.726+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 5, missCount = 1, failureCount = 0]
+2025-03-13T17:01:23.219+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 6, missCount = 1, failureCount = 0]
+2025-03-13T17:01:23.221+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 7, missCount = 1, failureCount = 0]
+2025-03-13T17:01:23.231+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 8, missCount = 1, failureCount = 0]
+2025-03-13T17:01:23.232+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 9, missCount = 1, failureCount = 0]
+2025-03-13T17:01:23.232+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 10, missCount = 1, failureCount = 0]
+2025-03-13T17:01:23.232+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 11, missCount = 1, failureCount = 0]
+2025-03-13T17:01:23.232+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 12, missCount = 1, failureCount = 0]
+2025-03-13T17:01:23.233+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 13, missCount = 1, failureCount = 0]
+2025-03-13T17:01:23.235+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 14, missCount = 1, failureCount = 0]
+2025-03-13T17:01:23.235+03:00 DEBUG 96831 --- [    Test worker] o.s.o.h.HibernateTransactionManager      : Initiating transaction rollback
+2025-03-13T17:01:23.235+03:00 DEBUG 96831 --- [    Test worker] o.s.o.h.HibernateTransactionManager      : Rolling back Hibernate transaction on Session [SessionImpl(797062899<open>)]
+2025-03-13T17:01:23.237+03:00 DEBUG 96831 --- [    Test worker] o.s.o.h.HibernateTransactionManager      : Closing Hibernate Session [SessionImpl(797062899<open>)] after transaction
+2025-03-13T17:01:23.237+03:00 DEBUG 96831 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction (1) for test class [msu.cmc.webprak.DAOTests]; test method [testBookCRUD]
+2025-03-13T17:01:23.238+03:00 DEBUG 96831 --- [    Test worker] .c.s.DirtiesContextTestExecutionListener : After test method: class [DAOTests], method [testBookCRUD], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null]
+2025-03-13T17:01:23.238+03:00 DEBUG 96831 --- [    Test worker] o.s.t.c.w.ServletTestExecutionListener   : Resetting RequestContextHolder for test class msu.cmc.webprak.DAOTests
+2025-03-13T17:01:23.243+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 15, missCount = 1, failureCount = 0]
+2025-03-13T17:01:23.244+03:00 DEBUG 96831 --- [    Test worker] org.springframework.test.context.cache   : Spring test ApplicationContext cache statistics: [DefaultContextCache@c038ba9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 16, missCount = 1, failureCount = 0]
+2025-03-13T17:01:23.244+03:00 DEBUG 96831 --- [    Test worker] .c.s.DirtiesContextTestExecutionListener : After test class: class [DAOTests], class annotated with @DirtiesContext [false] with mode [null]
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/nik/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.15.11/a38b16385e867f59a641330f0362ebe742788ed8/byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
