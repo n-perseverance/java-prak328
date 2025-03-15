@@ -2,6 +2,7 @@ package msu.cmc.webprak.DAO;
 
 import msu.cmc.webprak.java_entities.Book;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
@@ -9,13 +10,18 @@ import java.util.List;
 
 @Repository
 public class BookDAO extends CommonDAO<Book, String> {
+    //@Autowired
+    //private SessionFactory sessionFactory;
 
     public BookDAO() {
         super(Book.class);
     }
 
     public Book getByIsbn(String isbn) {
-        return getById(isbn);
+        Session session = getCurrentSession();
+        Query<Book> query = session.createQuery("FROM Book WHERE isbn = :isbn", Book.class);
+        query.setParameter("isbn", isbn);
+        return query.uniqueResult();
     }
 
     public List<Book> getByTitle(String title) {
