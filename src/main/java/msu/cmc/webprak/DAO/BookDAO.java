@@ -35,8 +35,10 @@ public class BookDAO extends CommonDAO<Book, String> {
 
     public List<Book> getByAuthor(String author) {
         Session session = getCurrentSession();
-        Query<Book> query = session.createQuery("FROM Book WHERE :author IN elements(authors)", Book.class);
-        query.setParameter("author", author);
+        Query<Book> query = session.createNativeQuery(
+                "SELECT * FROM books WHERE :author = ANY(authors)",
+                Book.class
+        );        query.setParameter("author", author);
         return query.list();
     }
 
