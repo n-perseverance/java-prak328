@@ -44,7 +44,6 @@ public class HibernateConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        //sessionFactory.setPackagesToScan("java_entities");
         sessionFactory.setPackagesToScan("msu.cmc.webprak.java_entities");
 
 
