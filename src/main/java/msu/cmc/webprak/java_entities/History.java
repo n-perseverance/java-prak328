@@ -14,17 +14,19 @@ import java.util.Objects;
 public class History implements CommonEntity<HistoryId> {
 
     @EmbeddedId
-    private HistoryId id;
+    private HistoryId id = new HistoryId();
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @MapsId("isbn")
-    @JoinColumns({
-            @JoinColumn(name = "isbn", referencedColumnName = "isbn", nullable = false),
-            @JoinColumn(name = "copy_id", referencedColumnName = "copy_id", nullable = false)
-    })
+    @JoinColumn(name = "isbn", nullable = false)
+    private Book book;
+
+    @ManyToOne
+    @MapsId("copyId")
+    @JoinColumn(name = "copy_id", nullable = false)
     private Copy copy;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @MapsId("readerId")
     @JoinColumn(name = "reader_id", nullable = false)
     private Reader reader;
@@ -55,10 +57,5 @@ public class History implements CommonEntity<HistoryId> {
                 && Objects.equals(reader, history.reader)
                 && Objects.equals(issueDate, history.issueDate)
                 && Objects.equals(returnDate, history.returnDate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, copy, reader, issueDate, returnDate);
     }
 }

@@ -3,8 +3,12 @@ package msu.cmc.webprak.java_entities;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
+import lombok.Getter;
+import lombok.Setter;
 
 @Embeddable
+@Getter
+@Setter
 public class HistoryId implements Serializable {
 
     @Column(name = "isbn", nullable = false)
@@ -15,6 +19,15 @@ public class HistoryId implements Serializable {
 
     @Column(name = "reader_id", nullable = false)
     private Integer readerId;
+
+    public HistoryId() {
+    }
+
+    public HistoryId(String isbn, Integer copyId, Integer readerId) {
+        this.isbn = isbn;
+        this.copyId = copyId;
+        this.readerId = readerId;
+    }
 
     @Override
     public boolean equals(Object o) {

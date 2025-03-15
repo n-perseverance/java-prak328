@@ -37,12 +37,19 @@ public class DAOTests {
 
     @Test
     public void testBook() {
-        //Book book = new Book();
+        Book book1 = new Book();
         Book book2 = bookDAO.getByIsbn("000");
-        //book.setIsbn("999");
-        //assertEquals("999", book.getIsbn());
+        List<Book> books = bookDAO.getByTitle("Война и мир");
+        book1.setIsbn("999");
+        assertEquals("999", book1.getIsbn());
         assertNull(book2);
 
-
+        Set<String> get = new HashSet<>();
+        for (Book book : books) {
+            get.add(book.getIsbn());
+        }
+        Set<String> ans = new HashSet<>();
+        ans.add("978-5-389-08980-1");
+        assertEquals(get, ans);
     }
 }
