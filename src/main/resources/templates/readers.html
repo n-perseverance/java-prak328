@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клиенты</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<script src="/js/bootstrap.bundle.min.js"> </script>
+
+<div th:replace="~{templates :: page-header}"></div>
+
+<h1 class="display-4 text-center mb-5">
+    Читатели
+</h1>
+<div class = "container">
+
+    <form th:action="@{/readers}" method="get" class="mb-3">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="searchName" class="form-label">Поиск по имени:</label>
+                <input type="text" class="form-control" id="searchName" name="name" th:value="${searchName}">
+            </div>
+            <div class="col-md-4">
+                <label for="searchPhone" class="form-label">Поиск по номеру телефона:</label>
+                <input type="text" class="form-control" id="searchPhone" name="phone" th:value="${searchPhone}">
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary mt-4">Поиск</button>
+                <a th:href="@{/readers}" class="btn btn-secondary mt-4 ms-2">Сбросить</a>
+            </div>
+        </div>
+    </form>
+
+    <a th:href="@{/readers/add}" class="btn btn-success float-end">Добавить читателя</a>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Телефон</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reader : ${readers}">
+            <td th:text="${reader.id}"></td>
+            <td th:text="${reader.name}"></td>
+            <td th:text="${reader.phoneNumber}"></td>
+            <td>
+                <a th:href="@{/readers/{readerId}(readerId=${reader.id})}" class="btn btn-primary btn-sm">Просмотр</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+</body>
+</html>
