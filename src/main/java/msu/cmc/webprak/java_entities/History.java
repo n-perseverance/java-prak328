@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -36,6 +38,14 @@ public class History implements CommonEntity<HistoryId> {
 
     @Column(nullable = false, name = "return_date")
     private Date returnDate;
+
+    public String getFormattedIssueDate() {
+        return new SimpleDateFormat("yyyy-MM-dd").format(issueDate);
+    }
+
+    public String getFormattedReturnDate() {
+        return new SimpleDateFormat("yyyy-MM-dd").format(returnDate);
+    }
 
     @Override
     public HistoryId getId() {

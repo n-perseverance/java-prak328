@@ -46,7 +46,7 @@ public class ReaderController {
             return "error";
         }
         model.addAttribute("reader", reader);
-        model.addAttribute("history",readerDAO.historyById(readerId));
+        model.addAttribute("history", readerDAO.historyById(readerId));
         return "readerId";
     }
 

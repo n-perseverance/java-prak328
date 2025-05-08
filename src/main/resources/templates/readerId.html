@@ -42,7 +42,7 @@
 </div>
 
 <div class = "container">
-    <a th:href="@{/readers/{readerId}/addOrder(readerId=${reader.id})}" class="btn btn-primary float-right mb-3">Добавить Запись в Историю</a>
+    <a th:href="@{/readers/{readerId}/addHistory(readerId=${reader.id})}" class="btn btn-primary float-right mb-3">Добавить Запись в Историю</a>
 
     <h1> История </h1>
     <table class="table table-striped">
@@ -57,14 +57,15 @@
         </thead>
         <tbody>
         <tr th:each="his : ${history}">
-            <td th:text="${his.book}"></td>
-            <td th:text="${his.copy}"></td>
-            <td th:text="${#temporals.format(his.issueDate, 'dd.MM.yyyy')}"></td>
-            <td th:text="${#temporals.format(his.returnDate, 'dd.MM.yyyy')}"></td>
+            <td th:text="${his.book.isbn}"></td>
+            <td th:text="${his.copy.copyId}"></td>
+            <td th:text="${reader.id}"></td>
+            <td th:text="${his.formattedIssueDate}"></td>
+            <td th:text="${his.formattedReturnDate}"></td>
             <td>
-                <a th:href="@{/history/{isbn}/{copyId}/{readerId}(isbn=${his.book}, copyId=${his.copy}, readerId=${his.reader.id})}"
+                <a th:href="@{/history/{isbn}/{copyId}/{readerId}(isbn=${his.book.isbn}, copyId=${his.copy.copyId}, readerId=${his.reader.id})}"
                    class="btn btn-primary btn-sm">Просмотр</a>
-                <a th:href="@{/history/{isbn}/{copyId}/{readerId}/delete(isbn=${his.book}, copyId=${his.copy}, readerId=${his.reader.id})}"
+                <a th:href="@{/history/{isbn}/{copyId}/{readerId}/delete(isbn=${his.book.isbn}, copyId=${his.copy.copyId}, readerId=${his.reader.id})}"
                    class="btn btn-danger btn-sm"
                    onclick="return confirm('Вы уверены, что хотите удалить эту запись?')">Удалить</a>
             </td>
