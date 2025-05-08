@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 import java.util.List;
@@ -40,6 +43,23 @@ public class Book implements CommonEntity<String> {
     @Override
     public void setId(String isbn) {
         this.isbn = isbn;
+    }
+
+    public String getYearOnly() {
+        if (year != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+            return sdf.format(year);
+        }
+        return "";
+    }
+
+    public void setYearFromString(String yearStr) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+            this.year = sdf.parse(yearStr);
+        } catch (ParseException e) {
+            throw new IllegalArgumentException("Неверный формат года");
+        }
     }
 
     public Book(

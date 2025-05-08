@@ -114,7 +114,7 @@ public class ReaderController {
             redirectAttributes.addFlashAttribute("errorMessage", "Ошибка при обновлении: " + e.getMessage());
         }
 
-        return "redirect:/readers/{readerId}";
+        return "redirect:/readers";
     }
 
 

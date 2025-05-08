@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Книги</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<script src="/js/bootstrap.bundle.min.js"> </script>
+
+<div th:replace="~{templates :: page-header}"></div>
+
+<h1 class="display-4 text-center mb-5">
+    Книги
+</h1>
+<div class = "container">
+
+    <form th:action="@{/books}" method="get" class="mb-3">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="searchIsbn" class="form-label">Поиск по ISBN:</label>
+                <input type="text" class="form-control" id="searchIsbn" name="isbn" th:value="${isbn}">
+            </div>
+            <div class="col-md-4">
+                <label for="searchName" class="form-label">Поиск по названию:</label>
+                <input type="text" class="form-control" id="searchName" name="name" th:value="${name}">
+            </div>
+            <div class="col-md-4">
+                <label for="searchAuthor" class="form-label">Поиск по автору:</label>
+                <input type="text" class="form-control" id="searchAuthor" name="author" th:value="${author}">
+            </div>
+            <div class="col-md-4">
+                <label for="searchPublisher" class="form-label">Поиск по издательству:</label>
+                <input type="text" class="form-control" id="searchPublisher" name="publisher" th:value="${publisher}">
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary mt-4">Поиск</button>
+                <a th:href="@{/books}" class="btn btn-secondary mt-4 ms-2">Сбросить</a>
+            </div>
+        </div>
+    </form>
+
+    <a th:href="@{/books/add}" class="btn btn-success float-end">Добавить книгу в каталог</a>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ISBN</th>
+            <th>Название</th>
+            <th>Автор</th>
+            <th>Издательство</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.isbn}"></td>
+            <td th:text="${book.name}"></td>
+            <td th:text="${#strings.listJoin(book.authors, ', ')}"></td>
+            <td th:text="${book.publisher}"></td>
+            <td>
+                <a th:href="@{/books/{bookId}(bookId=${book.isbn})}" class="btn btn-primary btn-sm">Просмотр</a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+</body>
+</html>

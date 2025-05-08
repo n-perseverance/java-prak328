@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Клиент </title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<script src="/js/bootstrap.bundle.min.js"> </script>
+
+<div th:replace="~{templates :: page-header}"></div>
+
+<h1 class="display-4 text-center mb-5">
+    Информация о книге
+</h1>
+
+<div class="container">
+
+    <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+        <span th:text="${errorMessage}"></span>
+    </div>
+
+    <form th:action="@{/books/{bookId}/edit(bookId=${book.isbn})}" th:object="${book}" method="post">
+        <div class="mb-3">
+            <label for="name" class="form-label">Название</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}">
+        </div>
+        <div class="mb-3">
+            <label for="authors" class="form-label">Авторы</label>
+            <input type="text" class="form-control" id="authors" th:field="*{authors}">
+        </div>
+        <div class="mb-3">
+            <label for="publisher" class="form-label">Издательство</label>
+            <input type="text" class="form-control" id="publisher" th:field="*{publisher}">
+        </div>
+        <div class="mb-3">
+            <label for="year" class="form-label">Год издания</label>
+            <input type="text" class="form-control" id="year"
+                   th:value="${book.yearOnly}"
+                   name="year">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        <a th:href="@{/books}" class="btn btn-secondary">Назад к списку</a>
+        <a th:href="@{/books/{bookId}/delete(bookId=${book.isbn})}" class="btn btn-primary btn-sm"
+           onclick="return confirm('Вы уверены, что хотите удалить книгу?')">Удалить</a>
+
+    </form>
+
+</div>
+
+</body>
+</html>
