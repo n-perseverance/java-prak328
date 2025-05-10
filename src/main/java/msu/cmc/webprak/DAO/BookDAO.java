@@ -1,6 +1,8 @@
 package msu.cmc.webprak.DAO;
 
 import msu.cmc.webprak.java_entities.Book;
+import msu.cmc.webprak.java_entities.Copy;
+import msu.cmc.webprak.java_entities.History;
 import org.hibernate.Session;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
@@ -39,6 +41,28 @@ public class BookDAO extends CommonDAO<Book, String> {
                 "SELECT * FROM books WHERE :author = ANY(authors)",
                 Book.class
         );        query.setParameter("author", author);
+        return query.list();
+    }
+
+    public List<Copy> copyById(String bookId) {
+        Session session = getCurrentSession();
+
+        String hql = "FROM Copy o WHERE o.book.isbn = :bookId";
+
+        Query<Copy> query = session.createQuery(hql, Copy.class);
+
+        query.setParameter("bookId",bookId);
+        return query.list();
+    }
+
+    public List<Copy> copyByCopyId(Integer copyId) {
+        Session session = getCurrentSession();
+
+        String hql = "FROM Copy o WHERE o.copyId = :copyId";
+
+        Query<Copy> query = session.createQuery(hql, Copy.class);
+
+        query.setParameter("copyId",copyId);
         return query.list();
     }
 

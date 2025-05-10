@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить запись в историю</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+
+<script src="/js/bootstrap.bundle.min.js"></script>
+
+<div th:replace="~{templates :: page-header}"></div>
+
+<div class="container mt-5">
+    <h2>Добавить запись в историю для читателя:
+        <span th:text="${reader.name}"></span> (ID: <span th:text="${reader.id}"></span>)
+    </h2>
+
+    <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
+
+    <form th:action="@{/readers/{readerId}/addHistory(readerId=${reader.id})}" method="post">
+
+        <div class="mb-3">
+            <label class="form-label">Книга:</label>
+            <select class="form-select" name="isbn" required>
+                <option value="">Выберите книгу</option>
+                <option th:each="book : ${allBooks}"
+                        th:value="${book.isbn}"
+                        th:text="${book.name + ' (ISBN: ' + book.isbn + ')'}"></option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">ID экземпляра:</label>
+            <input type="number" class="form-control" name="copyId" required
+                   placeholder="Введите ID экземпляра">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Дата выдачи:</label>
+            <input type="date" class="form-control" name="issueDate" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Дата возврата:</label>
+            <input type="date" class="form-control" name="returnDate" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+
+</div>
+
+</body>
+</html>

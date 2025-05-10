@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Экземпляр </title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<script src="/js/bootstrap.bundle.min.js"> </script>
+
+<div th:replace="~{templates :: page-header}"></div>
+
+<h1 class="display-4 text-center mb-5">
+    Информация об экземпляре
+</h1>
+
+<div class="container">
+
+    <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+        <span th:text="${errorMessage}"></span>
+    </div>
+
+    <form th:action="@{/copies/{copyId}/edit(copyId=${copy.copyId})}" th:object="${copy}" method="post">
+        <div class="mb-3">
+            <label for="availability" class="form-label">Наличие</label>
+            <select class="form-control" id="availability" th:field="*{availability}">
+                <option value="В наличии">В наличии</option>
+                <option value="Нет в наличии">Нет в наличии</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        <a th:href="@{/books/{bookId}(bookId=${copy.getBook().getIsbn()})}" class="btn btn-secondary">Назад к списку</a>
+    </form>
+
+</div>
+
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2>История выдачи</h2>
+            <form th:action="@{/copies/{copyId}/edit(copyId=${copy.copyId})}" method="get" class="row g-3">
+                <div class="col-md-4">
+                    <label for="startDate" class="form-label">Дата от</label>
+                    <input type="date" class="form-control" id="startDate" name="startDate"
+                           th:value="${param.startDate}">
+                </div>
+                <div class="col-md-4">
+                    <label for="endDate" class="form-label">Дата по</label>
+                    <input type="date" class="form-control" id="endDate" name="endDate"
+                           th:value="${param.endDate}">
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary me-2">Применить фильтр</button>
+                    <a th:href="@{/copies/{copyId}/edit(copyId=${copy.copyId})}"
+                       class="btn btn-outline-secondary">Сбросить</a>
+                </div>
+            </form>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID Читателя</th>
+                        <th>Дата выдачи</th>
+                        <th>Дата возврата</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="his : ${history}" th:class="${his.returnDate == null} ? 'table-warning'">
+                        <td th:text="${his.reader.id}"></td>
+                        <td th:text="${his.formattedIssueDate}"></td>
+                        <td>
+                            <span th:if="${his.returnDate != null}" th:text="${his.formattedReturnDate}"></span>
+                            <span th:if="${his.returnDate == null}" class="badge bg-warning">На руках</span>
+                        </td>
+                        <td>
+                            <a th:href="@{/readers/{readerId}(readerId=${his.reader.id})}"
+                               class="btn btn-primary btn-sm">Переход на страницу читателя</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

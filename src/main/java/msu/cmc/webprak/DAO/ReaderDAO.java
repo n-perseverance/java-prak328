@@ -29,7 +29,7 @@ public class ReaderDAO extends CommonDAO<Reader, Integer> {
         return query.list();
     }
 
-    public List<Reader> searchReaders(String name, String phone) {
+    public List<Reader> searchReaders(String name, String phone, String id) {
         Session session = getCurrentSession();
         StringBuilder hql = new StringBuilder("FROM Reader WHERE 1=1");
 
@@ -39,6 +39,10 @@ public class ReaderDAO extends CommonDAO<Reader, Integer> {
         if (phone != null && !phone.isEmpty()) {
             hql.append(" AND cast(phoneNumber as string) LIKE :phone");
         }
+        if (id != null && !id.isEmpty()) {
+            Integer readerId = Integer.parseInt(id);
+            hql.append(" AND id = :id");
+        }
 
         Query<Reader> query = session.createQuery(hql.toString(), Reader.class);
 
@@ -47,6 +51,10 @@ public class ReaderDAO extends CommonDAO<Reader, Integer> {
         }
         if (phone != null && !phone.isEmpty()) {
             query.setParameter("phone", "%" + phone + "%");
+        }
+        if (id != null && !id.isEmpty()) {
+            Integer readerId = Integer.parseInt(id);
+            query.setParameter("id", readerId);
         }
 
         return query.list();

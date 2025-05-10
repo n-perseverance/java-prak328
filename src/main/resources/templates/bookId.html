@@ -43,10 +43,41 @@
 
         <button type="submit" class="btn btn-primary">Сохранить изменения</button>
         <a th:href="@{/books}" class="btn btn-secondary">Назад к списку</a>
-        <a th:href="@{/books/{bookId}/delete(bookId=${book.isbn})}" class="btn btn-primary btn-sm"
+        <a th:href="@{/books/{bookId}/delete(bookId=${book.isbn})}" class="btn btn-danger float-right"
            onclick="return confirm('Вы уверены, что хотите удалить книгу?')">Удалить</a>
 
     </form>
+
+</div>
+
+<div class = "container">
+    <form th:action="@{/books/{bookId}/addCopy(bookId=${book.isbn})}" method="post">
+        <button type="submit" class="btn btn-success mt-3">
+            + Добавить новый экземпляр
+        </button>
+    </form>
+    <h1> Экземпляры </h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID Экземпляра</th>
+            <th>Наличие</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="his : ${copy}">
+            <td th:text="${his.copyId}"></td>
+            <td th:text="${his.availability}"></td>
+            <td>
+                <a th:href="@{/copies/{copyId}/edit(copyId=${his.copyId})}"
+                   class="btn btn-primary btn-sm">Просмотр</a>
+                <a th:href="@{/copies/{copyId}/delete(copyId=${his.copyId})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('Вы уверены, что хотите удалить эту запись?')">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
 </div>
 

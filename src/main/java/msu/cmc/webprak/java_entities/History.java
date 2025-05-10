@@ -3,6 +3,7 @@ package msu.cmc.webprak.java_entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -21,16 +22,19 @@ public class History implements CommonEntity<HistoryId> {
     @ManyToOne
     @MapsId("isbn")
     @JoinColumn(name = "isbn", nullable = false)
+    @Cascade(org.hibernate.annotations.CascadeType.MERGE)
     private Book book;
 
     @ManyToOne
     @MapsId("copyId")
     @JoinColumn(name = "copy_id", nullable = false)
+    @Cascade(org.hibernate.annotations.CascadeType.MERGE)
     private Copy copy;
 
     @ManyToOne
     @MapsId("readerId")
     @JoinColumn(name = "reader_id", nullable = false)
+    @Cascade(org.hibernate.annotations.CascadeType.MERGE)
     private Reader reader;
 
     @Column(nullable = false, name = "issue_date")

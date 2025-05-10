@@ -32,6 +32,14 @@ public class HistoryDAO extends CommonDAO<History, HistoryId> {
         return query.list();
     }
 
+    public List<History> getByCopyId(Integer copyId) {
+        Session session = getCurrentSession();
+        Query<History> query = session.createQuery(
+                "FROM History h WHERE h.copy.copyId = :copyId", History.class);
+        query.setParameter("copyId", copyId);
+        return query.list();
+    }
+
     public List<History> getByIssueDate(Date issueDate) {
         Session session = getCurrentSession();
         Query<History> query = session.createQuery(
@@ -63,6 +71,20 @@ public class HistoryDAO extends CommonDAO<History, HistoryId> {
                 "FROM History h WHERE h.returnDate BETWEEN :startDate AND :endDate", History.class);
         query.setParameter("startDate", startDate);
         query.setParameter("endDate", endDate);
+        return query.list();
+    }
+
+    public List<History> findByCopyAndDateRange(Integer copyId, Date startDate, Date endDate) {
+        Session session = getCurrentSession();
+        Query<History> query = session.createQuery(
+                "FROM History h WHERE h.copy.copyId = :copyId " +
+                        "AND h.issueDate BETWEEN :startDate AND :endDate " +
+                        "ORDER BY h.issueDate DESC", History.class);
+
+        query.setParameter("copyId", copyId);
+        query.setParameter("startDate", startDate);
+        query.setParameter("endDate", endDate);
+
         return query.list();
     }
 }
