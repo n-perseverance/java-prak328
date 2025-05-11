@@ -8,3 +8,4 @@ https://github.com/n-perseverance/java-prak328/tree/main/src/main/resources/temp
 https://github.com/n-perseverance/java-prak328/tree/main/src/main/java/msu/cmc/webprak/Controllers
 
 Тесты:
+https://github.com/n-perseverance/java-prak328/blob/main/src/test/java/msu/cmc/webprak/WebTest.java
