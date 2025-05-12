@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -187,6 +189,46 @@ public class WebTest {
             return currentReadersCount == initialReadersCount + 1;
         });
 
+        driver.findElement(By.id("searchPhone")).sendKeys("89991234567");
+        click(By.xpath("//button[text()='Поиск']"));
+
+        wait.until(d -> {
+            List<WebElement> rows = driver.findElements(By.xpath("//table[@class='table table-striped']//tbody/tr"));
+            return rows.size() == 1;
+        });
+
+        click(By.xpath("//a[contains(@class, 'btn-primary') and text()='Просмотр']"));
+
+        findElement(By.id("name")).clear();
+        findElement(By.id("name")).sendKeys("Test");
+
+        driver.findElement(By.xpath("//button[text()='Сохранить изменения']")).click();
+
+        wait.until(ExpectedConditions.titleIs("Читатели"));
+
+        driver.findElement(By.id("searchName")).sendKeys("Test");
+        click(By.xpath("//button[text()='Поиск']"));
+
+        wait.until(d -> {
+            List<WebElement> rows = driver.findElements(By.xpath("//table[@class='table table-striped']//tbody/tr"));
+            return rows.size() == 1;
+        });
+
+        click(By.xpath("//a[contains(@class, 'btn-primary') and text()='Просмотр']"));
+
+        click(By.xpath("//a[contains(@class, 'btn-danger') and text()='Удалить читателя']"));
+
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+
+        assertEquals("Вы уверены, что хотите удалить этого читателя?", alert.getText());
+
+        alert.accept();
+
+        wait.until(d -> {
+            List<WebElement> rows = driver.findElements(By.xpath("//table[@class='table table-striped']//tbody/tr"));
+            return rows.size() == 10;
+        });
+
     }
 
     @Test
@@ -208,6 +250,44 @@ public class WebTest {
         });
 
         click(By.xpath("//a[contains(@class, 'btn-primary') and text()='Просмотр']"));
+
+        WebElement addHistoryButton = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//a[contains(@href,'addHistory') and contains(text(),'Добавить Запись в Историю')]")
+        ));
+        addHistoryButton.click();
+
+        wait.until(ExpectedConditions.titleIs("Добавить запись в историю"));
+
+        Select bookSelect = new Select(driver.findElement(By.name("isbn")));
+        bookSelect.selectByIndex(1);
+
+        driver.findElement(By.name("copyId")).sendKeys("1");
+
+        LocalDate today = LocalDate.now();
+        LocalDate returnDate = today.plusDays(7);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedIssueDate = today.format(formatter);
+        String formattedReturnDate = returnDate.format(formatter);
+
+        WebElement issueDateField = driver.findElement(By.name("issueDate"));
+        issueDateField.clear();
+        issueDateField.sendKeys(formattedIssueDate);
+
+        WebElement returnDateField = driver.findElement(By.name("returnDate"));
+        returnDateField.clear();
+        returnDateField.sendKeys(formattedReturnDate);
+
+        driver.findElement(By.xpath("//button[text()='Добавить']")).click();
+
+        wait.until(ExpectedConditions.titleIs("Читатель"));
+
+        wait.until(d -> {
+            List<WebElement> currentHistory = driver.findElements(
+                    By.xpath("//h1[contains(text(),'История')]/following-sibling::table//tbody/tr")
+            );
+            return currentHistory.size() == 1;
+        });
     }
 
     @Test
@@ -231,6 +311,20 @@ public class WebTest {
         });
 
         click(By.xpath("//a[contains(@class, 'btn-primary') and text()='Просмотр']"));
+
+        wait.until(d -> {
+            List<WebElement> rows = driver.findElements(By.xpath("//table[@class='table table-striped']//tbody/tr"));
+            return rows.size() == 2;
+        });
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//form[contains(@action, 'addCopy')]//button[contains(., '+ Добавить новый экземпляр')]")
+        )).click();
+
+        wait.until(d -> {
+            List<WebElement> rows = driver.findElements(By.xpath("//table[@class='table table-striped']//tbody/tr"));
+            return rows.size() == 3;
+        });
     }
 
     @Test

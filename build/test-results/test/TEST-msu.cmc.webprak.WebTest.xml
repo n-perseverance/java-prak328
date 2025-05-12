@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="msu.cmc.webprak.WebTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2025-05-11T21:09:55" hostname="MacBook-Air-Nik.local" time="12.69">
+<testsuite name="msu.cmc.webprak.WebTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2025-05-12T20:47:38" hostname="MacBook-Air-Nik.local" time="14.817">
   <properties/>
-  <testcase name="use_case1()" classname="msu.cmc.webprak.WebTest" time="2.09"/>
-  <testcase name="use_case2()" classname="msu.cmc.webprak.WebTest" time="1.747"/>
-  <testcase name="use_case3()" classname="msu.cmc.webprak.WebTest" time="1.288"/>
-  <testcase name="use_case4()" classname="msu.cmc.webprak.WebTest" time="1.509"/>
-  <testcase name="example1Test()" classname="msu.cmc.webprak.WebTest" time="2.247"/>
-  <testcase name="example1Test2()" classname="msu.cmc.webprak.WebTest" time="3.805"/>
+  <testcase name="use_case1()" classname="msu.cmc.webprak.WebTest" time="4.078"/>
+  <testcase name="use_case2()" classname="msu.cmc.webprak.WebTest" time="1.637"/>
+  <testcase name="use_case3()" classname="msu.cmc.webprak.WebTest" time="1.478"/>
+  <testcase name="use_case4()" classname="msu.cmc.webprak.WebTest" time="2.044"/>
+  <testcase name="example1Test()" classname="msu.cmc.webprak.WebTest" time="1.838"/>
+  <testcase name="example1Test2()" classname="msu.cmc.webprak.WebTest" time="3.741"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[мая 12, 2025 12:09:57 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+  <system-err><![CDATA[мая 12, 2025 11:47:40 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 136, returning the closest version; found: 135; Please update to a Selenium version that supports CDP version 136
-мая 12, 2025 12:09:58 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+мая 12, 2025 11:47:43 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 136, returning the closest version; found: 135; Please update to a Selenium version that supports CDP version 136
-мая 12, 2025 12:10:00 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+мая 12, 2025 11:47:45 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 136, returning the closest version; found: 135; Please update to a Selenium version that supports CDP version 136
-мая 12, 2025 12:10:01 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+мая 12, 2025 11:47:46 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 136, returning the closest version; found: 135; Please update to a Selenium version that supports CDP version 136
-мая 12, 2025 12:10:03 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+мая 12, 2025 11:47:48 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 136, returning the closest version; found: 135; Please update to a Selenium version that supports CDP version 136
-мая 12, 2025 12:10:05 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+мая 12, 2025 11:47:50 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 136, returning the closest version; found: 135; Please update to a Selenium version that supports CDP version 136
 ]]></system-err>
 </testsuite>
